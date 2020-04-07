@@ -17,7 +17,7 @@
 		let paintToggle = true;
 		let backgroundColor = "#000"
 		let	container = document.querySelector('#container')
-		container.addEventListener('click', () => paintToggle = !paintToggle)
+		container.parentElement.addEventListener('click', () => paintToggle = !paintToggle)
 
 
 		function buildGrid() {
