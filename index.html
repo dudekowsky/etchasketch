@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="./styles.css">
+	<title>Etch a Sketch</title>
+</head>
+<body>
+	<h1>Etch A Sketch</h1>
+	<p>Click to toggle drawing</p>
+
+	<input type="button" name="reset" onclick="buildGrid()" value="reset">
+	<input type="number" name="size" id="size" value=16>
+	<input type="color" name="color" id="color" value="#000000">
+	<div id="container"></div>
+
+	<script>
+		let paintToggle = true;
+		let backgroundColor = "#000"
+		let	container = document.querySelector('#container')
+		container.addEventListener('click', () => paintToggle = !paintToggle)
+
+
+		function buildGrid() {
+			size = document.querySelector('#size').value
+			// clear container if already filled
+			container.innerHTML = ''
+			container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+			container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+			for (let i = 0; i < size; i++) {
+				for (let j = 0; j < size; j++) {
+					div = document.createElement('div')
+					div.classList.add('sketchGrid')
+					div.addEventListener('mouseover', paintBlack)
+					container.appendChild(div)
+				}
+			}
+		}
+
+		function paintBlack(event) {
+			if (paintToggle) {
+				this.style.backgroundColor = document.querySelector('#color').value
+			}
+		}
+		buildGrid()
+	</script>
+</body>
+</html>
