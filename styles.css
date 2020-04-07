@@ -8,7 +8,8 @@
 
 .sketchGrid {
 	display: block;
-	border: thin solid #CCC;
+	border: thin dotted #CCC;
+	border-collapse: collapse;
 }
 
 .blackened {
